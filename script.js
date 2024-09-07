@@ -100,6 +100,12 @@ btn.addEventListener('click', () => {
     recognition.start();
 });
 
+// Add a touch event listener for mobile devices
+btn.addEventListener('touchstart', () => {
+    content.textContent = "Listening...";
+    recognition.start();
+});
+
 function takeCommand(message) {
     if (message.includes('hey') || message.includes('hello')) {
         speak("Hello Sir, How May I assist You?");

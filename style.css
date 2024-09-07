@@ -97,3 +97,34 @@ body {
     margin-right: 20px;
     cursor: pointer;
 }
+
+/* Media Queries for Mobile Devices */
+@media (max-width: 768px) {
+    .main .input {
+        width: 80vw;
+        height: 60px;
+    }
+    
+    .main .input .talk {
+        width: 60px;
+        height: 60px;
+        font-size: 20px;
+    }
+    
+    .main .input .content {
+        font-size: 18px;
+        margin-right: 15px;
+    }
+
+    .main .image-container .image img {
+        width: 250px;
+    }
+
+    .main .image-container h1 {
+        font-size: 30px;
+    }
+
+    .main .image-container p {
+        font-size: 16px;
+    }
+}
