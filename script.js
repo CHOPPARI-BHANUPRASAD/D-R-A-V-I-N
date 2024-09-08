@@ -1,4 +1,4 @@
-// Initialize particles.js with custom settings for animated background
+// Initialize particles.js with custom settings
 particlesJS("particles-js", {
     particles: {
         number: {
@@ -9,7 +9,7 @@ particlesJS("particles-js", {
             },
         },
         color: {
-            value: "#00bcd4", 
+            value: "#00bcd4", // Set particle color to #00bcd4
         },
         shape: {
             type: "circle",
@@ -29,7 +29,7 @@ particlesJS("particles-js", {
         line_linked: {
             enable: true,
             distance: 150,
-            color: "#00bcd4", // Line color to match particles
+            color: "#00bcd4", // Set link color to match particles
             opacity: 0.4,
             width: 1,
         },
@@ -43,22 +43,22 @@ particlesJS("particles-js", {
         events: {
             onhover: {
                 enable: true,
-                mode: "repulse", // Particles move away on hover
+                mode: "repulse",
             },
             onclick: {
                 enable: true,
-                mode: "push", // More particles added on click
+                mode: "push",
             },
         },
     },
     retina_detect: true,
 });
 
-// Virtual Assistant Logic
-const btn = document.querySelector('.talk'); // Select microphone button
-const content = document.querySelector('.content'); // Select display content area
+// Virtual Assistant Code
+const btn = document.querySelector('.talk');
+const content = document.querySelector('.content');
 
-// Function to handle speech synthesis
+// Function to trigger speech synthesis
 function speak(text) {
     if ('speechSynthesis' in window) {
         const text_speak = new SpeechSynthesisUtterance(text);
@@ -71,7 +71,7 @@ function speak(text) {
     }
 }
 
-// Function to provide greeting based on the time of day
+// Function to greet based on time of day
 function wishMe() {
     const day = new Date();
     const hour = day.getHours();
@@ -85,13 +85,12 @@ function wishMe() {
     }
 }
 
-// Initialize DRAVIN and greet the user when the page loads
+// Initialize the virtual assistant
 window.addEventListener('load', () => {
     speak("Initializing DRAVIN...");
     wishMe();
 });
 
-// Speech Recognition
 const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
 if (!SpeechRecognition) {
     console.error("Speech Recognition not supported");
@@ -99,15 +98,13 @@ if (!SpeechRecognition) {
 
 const recognition = new SpeechRecognition();
 
-// Handle results from speech recognition
 recognition.onresult = (event) => {
     const currentIndex = event.resultIndex;
     const transcript = event.results[currentIndex][0].transcript;
-    content.textContent = transcript; // Display transcript
-    takeCommand(transcript.toLowerCase()); // Process the command
+    content.textContent = transcript;
+    takeCommand(transcript.toLowerCase());
 };
 
-// Start listening when the microphone button is clicked
 btn.addEventListener('click', () => {
     content.textContent = "Listening...";
     recognition.start();
