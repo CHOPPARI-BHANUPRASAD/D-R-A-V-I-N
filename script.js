@@ -1,4 +1,4 @@
-// Initialize particles.js with custom settings
+// Initialize particles.js with custom settings for animated background
 particlesJS("particles-js", {
     particles: {
         number: {
@@ -9,7 +9,7 @@ particlesJS("particles-js", {
             },
         },
         color: {
-            value: "#00bcd4", // Set particle color to #00bcd4
+            value: "#00bcd4", 
         },
         shape: {
             type: "circle",
@@ -29,7 +29,7 @@ particlesJS("particles-js", {
         line_linked: {
             enable: true,
             distance: 150,
-            color: "#00bcd4", // Set link color to match particles
+            color: "#00bcd4", // Line color to match particles
             opacity: 0.4,
             width: 1,
         },
@@ -43,21 +43,22 @@ particlesJS("particles-js", {
         events: {
             onhover: {
                 enable: true,
-                mode: "repulse",
+                mode: "repulse", // Particles move away on hover
             },
             onclick: {
                 enable: true,
-                mode: "push",
+                mode: "push", // More particles added on click
             },
         },
     },
     retina_detect: true,
 });
 
-// Virtual Assistant Code
-const btn = document.querySelector('.talk');
-const content = document.querySelector('.content');
+// Virtual Assistant Logic
+const btn = document.querySelector('.talk'); // Select microphone button
+const content = document.querySelector('.content'); // Select display content area
 
+// Function to handle speech synthesis
 function speak(text) {
     if ('speechSynthesis' in window) {
         const text_speak = new SpeechSynthesisUtterance(text);
@@ -70,6 +71,7 @@ function speak(text) {
     }
 }
 
+// Function to provide greeting based on the time of day
 function wishMe() {
     const day = new Date();
     const hour = day.getHours();
@@ -83,11 +85,13 @@ function wishMe() {
     }
 }
 
+// Initialize DRAVIN and greet the user when the page loads
 window.addEventListener('load', () => {
     speak("Initializing DRAVIN...");
     wishMe();
 });
 
+// Speech Recognition
 const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
 if (!SpeechRecognition) {
     console.error("Speech Recognition not supported");
@@ -95,13 +99,15 @@ if (!SpeechRecognition) {
 
 const recognition = new SpeechRecognition();
 
+// Handle results from speech recognition
 recognition.onresult = (event) => {
     const currentIndex = event.resultIndex;
     const transcript = event.results[currentIndex][0].transcript;
-    content.textContent = transcript;
-    takeCommand(transcript.toLowerCase());
+    content.textContent = transcript; // Display transcript
+    takeCommand(transcript.toLowerCase()); // Process the command
 };
 
+// Start listening when the microphone button is clicked
 btn.addEventListener('click', () => {
     content.textContent = "Listening...";
     recognition.start();
@@ -113,6 +119,7 @@ btn.addEventListener('touchstart', () => {
     recognition.start();
 });
 
+// Function to handle various commands based on speech input
 function takeCommand(message) {
     if (message.includes('hey') || message.includes('hello')) {
         speak("Hello Sir, How May I assist You?");
@@ -129,24 +136,19 @@ function takeCommand(message) {
         speak("Opening Facebook...");
     } else if (message.includes('what is') || message.includes('who is') || message.includes('what are')) {
         window.open(`https://www.google.com/search?q=${message.replace(/ /g, "+")}`, "_blank");
-        const finalText = "This is what I found on the internet regarding " + message;
-        speak(finalText);
+        speak("This is what I found on the internet regarding " + message);
     } else if (message.includes('wikipedia')) {
         window.open(`https://en.wikipedia.org/wiki/${message.replace("wikipedia", "").trim()}`, "_blank");
-        const finalText = "This is what I found on Wikipedia regarding " + message;
-        speak(finalText);
+        speak("This is what I found on Wikipedia regarding " + message);
     } else if (message.includes('time')) {
         const time = new Date().toLocaleString(undefined, { hour: "numeric", minute: "numeric" });
-        const finalText = "The current time is " + time;
-        speak(finalText);
+        speak("The current time is " + time);
     } else if (message.includes('date')) {
         const date = new Date().toLocaleString(undefined, { month: "short", day: "numeric" });
-        const finalText = "Today's date is " + date;
-        speak(finalText);
+        speak("Today's date is " + date);
     } else {
         window.open(`https://www.google.com/search?q=${message.replace(/ /g, "+")}`, "_blank");
-        const finalText = "I found some information for " + message + " from Google.";
-        speak(finalText);
+        speak("I found some information for " + message + " from Google.");
         speak("Thank you for choosing me.");
     }
 }

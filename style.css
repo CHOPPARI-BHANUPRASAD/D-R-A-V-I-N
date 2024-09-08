@@ -1,5 +1,7 @@
+/* Importing Google Font: Roboto Mono */
 @import url("https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@100;200;300;400;500;600;700&display=swap");
 
+/* margins and paddings */
 * {
     margin: 0;
     padding: 0;
@@ -14,15 +16,17 @@
     height: 100%;
     top: 0;
     left: 0;
-    z-index: -1; /* Send particles to the background */
+    z-index: -1; 
 }
 
+/* Body Styles */
 body {
     margin: 0;
     padding: 0;
-    background: #000; /* Set background color to black */
+    background: #000;
 }
 
+/* Main Section Styling */
 .main {
     min-height: 100vh;
     position: relative;
@@ -31,9 +35,10 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    z-index: 1; /* Ensure the main content is on top of particles */
+    z-index: 1; 
 }
 
+/* Styling for Image Container */
 .main .image-container {
     padding: 10px;
 }
@@ -46,23 +51,24 @@ body {
 }
 
 .main .image-container .image img {
-    width: 350px;
+    width: 350px; /* Image Width */
     align-items: center;
 }
 
 .main .image-container h1 {
-    color: #00bcd4;
+    color: #00bcd4; /* Title Color */
     text-align: center;
     margin-bottom: 10px;
     font-size: 40px;
 }
 
 .main .image-container p {
-    color: #aed0d0;
+    color: #aed0d0; /* Paragraph Color */
     text-align: center;
     margin-bottom: 40px;
 }
 
+/* Input Section with Microphone */
 .main .input {
     display: flex;
     justify-content: center;
@@ -70,7 +76,7 @@ body {
     width: 40vw;
     height: 50px;
     border-radius: 20px;
-    background: rgba(202, 253, 255, 0.5);
+    background: rgba(202, 253, 255, 0.5); /* Transparent background */
 }
 
 .main .input .talk {
@@ -98,19 +104,19 @@ body {
     cursor: pointer;
 }
 
-/* Media Queries for Mobile Devices */
+/* Responsive Design for Mobile Devices */
 @media (max-width: 768px) {
     .main .input {
         width: 80vw;
         height: 60px;
     }
-    
+
     .main .input .talk {
         width: 60px;
         height: 60px;
         font-size: 20px;
     }
-    
+
     .main .input .content {
         font-size: 18px;
         margin-right: 15px;
