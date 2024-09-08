@@ -121,16 +121,23 @@ btn.addEventListener('touchstart', () => {
 
 // Function to handle various commands based on speech input
 function takeCommand(message) {
-    if (message.includes('hey') || message.includes('hello')) {
-        speak("Hello Sir, How May I assist You?");
+    // Respond to greetings and follow up with "How may I assist you?"
+    if (message.includes('good morning')) {
+        speak("Good Morning Sir, How may I assist you?");
+    } else if (message.includes('good afternoon')) {
+        speak("Good Afternoon Sir, How may I assist you?");
+    } else if (message.includes('good evening')) {
+        speak("Good Evening Sir, How may I assist you?");
+    } else if (message.includes('hey') || message.includes('hello')) {
+        speak("Hello Sir, How may I assist you?");
     } else if (message.includes("what is your name") || message.includes("who are you") || message.includes("your name")) {
-        speak("I'm Dravin, your virtual assistant");
+        speak("I'm DRAVIN, your virtual assistant.");
     } else if (message.includes("open google")) {
         window.open("https://google.com", "_blank");
         speak("Opening Google...");
     } else if (message.includes("open youtube")) {
         window.open("https://youtube.com", "_blank");
-        speak("Opening Youtube...");
+        speak("Opening YouTube...");
     } else if (message.includes("open facebook")) {
         window.open("https://facebook.com", "_blank");
         speak("Opening Facebook...");
