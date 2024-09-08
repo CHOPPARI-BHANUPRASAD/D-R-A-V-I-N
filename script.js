@@ -9,7 +9,7 @@ particlesJS("particles-js", {
             },
         },
         color: {
-            value: "#00bcd4", // Set particle color to #00bcd4
+            value: "#00bcd4", 
         },
         shape: {
             type: "circle",
@@ -29,7 +29,7 @@ particlesJS("particles-js", {
         line_linked: {
             enable: true,
             distance: 150,
-            color: "#00bcd4", // Set link color to match particles
+            color: "#00bcd4", 
             opacity: 0.4,
             width: 1,
         },
@@ -118,7 +118,6 @@ btn.addEventListener('touchstart', () => {
 
 // Function to handle various commands based on speech input
 function takeCommand(message) {
-    // Respond to greetings and follow up with "How may I assist you?"
     if (message.includes('good morning')) {
         speak("Good Morning Sir, How may I assist you?");
     } else if (message.includes('good afternoon')) {
@@ -128,8 +127,11 @@ function takeCommand(message) {
     } else if (message.includes('hey') || message.includes('hello')) {
         speak("Hello Sir, How may I assist you?");
     } else if (message.includes("what is your name") || message.includes("who are you") || message.includes("your name")) {
-        speak("I'm DRAVIN, your virtual assistant.");
-    } else if (message.includes("open google")) {
+        speak("I'm DRAVIN");
+    } else if (message.includes("tell me about yourself")) {
+        speak("I'm DRAVIN, a virtual assistant. My boss is Mr.Bhanu Prasad Mudhiraj. I can recognize your voice and assist you from Google search results.");
+    }
+    else if (message.includes("open google")) {
         window.open("https://google.com", "_blank");
         speak("Opening Google...");
     } else if (message.includes("open youtube")) {
